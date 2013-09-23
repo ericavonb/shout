@@ -8,6 +8,7 @@ To use,
 To make a string into block letters, use 'Blockify':
 ``Blockify("BOO!", 80)``
 returns:
+
 " ______       ____       ____     _     
 |\ _____\   /\ ____\   /\ ____\  |\_\   
 | |  __  | | /  ___  \| /  ___  \| | |  
@@ -22,6 +23,7 @@ returns:
  
  ``PrintBlocks("No go!") ``
  prints:
+
  "__    __     ____             ______       ____     _    
 |\ _\ |\ \  /\ ____\          |\ _____\   /\ ____\  |\_\   
 | |  \| | || /  ___  \        | |  ____| | /  ___  \| | |  
