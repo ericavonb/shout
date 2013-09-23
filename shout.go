@@ -330,6 +330,16 @@ func getLetter(str string) []string {
 	SPACE[6] = `        `
 	SPACE[7] = `        `
 
+	BLANK := make([]string, 8)
+	BLANK[0] = `   `
+	BLANK[1] = `   `
+	BLANK[2] = `   `
+	BLANK[3] = `   `
+	BLANK[4] = `   `
+	BLANK[5] = `   `
+	BLANK[6] = `   `
+	BLANK[7] = `   `
+
 	letterMap := make(map[string][]string)
 
 	letterMap["A"] = A
@@ -368,7 +378,9 @@ func getLetter(str string) []string {
 	if letterMap[str] != nil {
 		return letterMap[str]
 	} else {
-		return SPACE
+		ltr := BLANK
+		ltr[6] = fmt.Sprintf(" %s ", str)
+		return ltr
 	}
 }
 
@@ -379,7 +391,7 @@ func GetWidth() (int, error) {
 	return strconv.Atoi(strings.TrimSpace(buf.String()))
 }
 
-func ConvertString(str string, w int) string {
+func Blockify(str string, w int) string {
 	strs := strings.Split(strings.ToUpper(str), "")
 	res := make([]string, 8)
 	for _, s := range strs {
@@ -403,22 +415,26 @@ func ConvertString(str string, w int) string {
 	return strings.Join(res, "\n")
 }
 
-func PrintString(str string) {
+func PrintBlocks(str string) {
 	w, err := GetWidth()
 	if err != nil {
 		w = 80
 	}
-	fmt.Println(ConvertString(str, w))
+	fmt.Println(Blockify(str, w))
 }
 
 func MegaFail() {
-	PrintString("FAIL!")
+	PrintBlocks("FAIL!")
 }
 
 func NoGo() {
-	PrintString("no go!")
+	PrintBlocks("no go!")
 }
 
 func BadGo() {
-	PrintString("Bad go!")
+	PrintBlocks("Bad go!")
+}
+
+func main() {
+	PrintBlocks("no go!")
 }
